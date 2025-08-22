@@ -9,7 +9,8 @@ const dashboard_router = express.Router()
 dashboard_router.post('/', async (req, res) => {
   const newForm = new Form(req.body)
   await newForm.save()
-  console.log("Form Saved")
+  res.send("done")
+  console.log("done")
 });
 
 dashboard_router.get('/', Authentication, async (req, res) => {

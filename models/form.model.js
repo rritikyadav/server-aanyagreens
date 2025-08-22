@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const formSchema = mongoose.Schema({
-    Name:{
+    name:{
         type:String,
         required:true
     },
@@ -13,15 +13,11 @@ const formSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    event:{
-        type:String,
-        required:true
-    },
     guests:{
         type:String,
         required:true
     },
-    specificDetails:{
+    event:{
         type:String,
     }
 },{timestamps:true});

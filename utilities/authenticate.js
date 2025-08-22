@@ -5,12 +5,12 @@ import jwt from 'jsonwebtoken'
 
 export default function Authentication(req, res, next) {
     if (!req.headers.authorization) {
-        return res.status(404).json({ error: "Contact Your Developer" })
+        return res.status(404).json({ error: "Unauthorized Access" })
     }
     const authtoken = req.headers.authorization;
     const authresult = authCheck(authtoken)
     if (!authresult) {
-        res.status(404).json({error:"Unauthorizes Access"})
+        res.status(404).json({error:"Unauthorized Access"})
     }
     next()
 }
