@@ -10,8 +10,24 @@ import dbConnection from './Db/db.js';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://aanyagreens.in",
+  "https://admin.aanyagreens.in"
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 
 
 app.use('/dashboard', dashboard_router);
